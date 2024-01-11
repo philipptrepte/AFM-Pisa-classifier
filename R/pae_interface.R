@@ -49,37 +49,37 @@ pae.interface <- function(import_afm, plldt = 50) {
                         complex = str_extract(names(afm_pae)[i], pattern = "[:alnum:]*_[:alnum:]*(?=_)"),
                         model = as.numeric(str_extract(names(afm_pae)[i], pattern = "(?<=_model_)[:digit:]*")),
                         rank = as.numeric(str_extract(names(afm_pae)[i], pattern = "(?<=_rank_)[:digit:]*")),
-                        interAB.cluster11.median = NA,
-                        interAB.cluster11.mean = NA,
-                        interAB.cluster11.size = NA,
+                        interAB.cluster1.median = NA,
+                        interAB.cluster1.mean = NA,
+                        interAB.cluster1.size = NA,
 
-                        interAB.cluster22.median = NA,
-                        interAB.cluster22.mean = NA,
-                        interAB.cluster22.size = NA,
+                        interAB.cluster2.median = NA,
+                        interAB.cluster2.mean = NA,
+                        interAB.cluster2.size = NA,
 
-                        interAB.cluster21.median = NA,
-                        interAB.cluster21.mean = NA,
-                        interAB.cluster21.size = NA,
+                        interAB.cluster3.median = NA,
+                        interAB.cluster3.mean = NA,
+                        interAB.cluster3.size = NA,
 
-                        interAB.cluster12.median = NA,
-                        interAB.cluster12.mean = NA,
-                        interAB.cluster12.size = NA,
+                        interAB.cluster4.median = NA,
+                        interAB.cluster4.mean = NA,
+                        interAB.cluster4.size = NA,
 
-                        interBA.cluster11.median = NA,
-                        interBA.cluster11.mean = NA,
-                        interBA.cluster11.size = NA,
+                        interBA.cluster1.median = NA,
+                        interBA.cluster1.mean = NA,
+                        interBA.cluster1.size = NA,
 
-                        interBA.cluster22.median = NA,
-                        interBA.cluster22.mean = NA,
-                        interBA.cluster22.size = NA,
+                        interBA.cluster2.median = NA,
+                        interBA.cluster2.mean = NA,
+                        interBA.cluster2.size = NA,
 
-                        interBA.cluster21.median = NA,
-                        interBA.cluster21.mean = NA,
-                        interBA.cluster21.size = NA,
+                        interBA.cluster3.median = NA,
+                        interBA.cluster3.mean = NA,
+                        interBA.cluster3.size = NA,
 
-                        interBA.cluster12.median = NA,
-                        interBA.cluster12.mean = NA,
-                        interBA.cluster12.size = NA
+                        interBA.cluster4.median = NA,
+                        interBA.cluster4.mean = NA,
+                        interBA.cluster4.size = NA
       )
     } else {
       if(class(try(stats::kmeans(afm_pae_interAB, 2), silent = TRUE)) == "try-error"){
@@ -107,37 +107,37 @@ pae.interface <- function(import_afm, plldt = 50) {
                         complex = str_extract(names(afm_pae)[i], pattern = "[:alnum:]*_[:alnum:]*(?=_)"),
                         model = as.numeric(str_extract(names(afm_pae)[i], pattern = "(?<=_model_)[:digit:]*")),
                         rank = as.numeric(str_extract(names(afm_pae)[i], pattern = "(?<=_rank_)[:digit:]*")),
-                        interAB.cluster11.median = median(afm_pae_interAB[afm_pae_interAB_cluster_row$`1`, afm_pae_interAB.cluster.col$`1`], na.rm = TRUE),
-                        interAB.cluster11.mean = mean(afm_pae_interAB[afm_pae_interAB_cluster_row$`1`, afm_pae_interAB.cluster.col$`1`], na.rm = TRUE),
-                        interAB.cluster11.size = length(afm_pae_interAB_cluster_row$`1`) * length(afm_pae_interAB.cluster.col$`1`),
+                        interAB.cluster1.median = median(afm_pae_interAB[afm_pae_interAB_cluster_row$`1`, afm_pae_interAB.cluster.col$`1`], na.rm = TRUE),
+                        interAB.cluster1.mean = mean(afm_pae_interAB[afm_pae_interAB_cluster_row$`1`, afm_pae_interAB.cluster.col$`1`], na.rm = TRUE),
+                        interAB.cluster1.size = length(afm_pae_interAB_cluster_row$`1`) * length(afm_pae_interAB.cluster.col$`1`),
 
-                        interAB.cluster22.median = median(afm_pae_interAB[afm_pae_interAB_cluster_row$`2`, afm_pae_interAB.cluster.col$`2`], na.rm = TRUE),
-                        interAB.cluster22.mean = mean(afm_pae_interAB[afm_pae_interAB_cluster_row$`2`, afm_pae_interAB.cluster.col$`2`], na.rm = TRUE),
-                        interAB.cluster22.size = length(afm_pae_interAB_cluster_row$`2`) * length(afm_pae_interAB.cluster.col$`2`),
+                        interAB.cluster2.median = median(afm_pae_interAB[afm_pae_interAB_cluster_row$`2`, afm_pae_interAB.cluster.col$`2`], na.rm = TRUE),
+                        interAB.cluster2.mean = mean(afm_pae_interAB[afm_pae_interAB_cluster_row$`2`, afm_pae_interAB.cluster.col$`2`], na.rm = TRUE),
+                        interAB.cluster2.size = length(afm_pae_interAB_cluster_row$`2`) * length(afm_pae_interAB.cluster.col$`2`),
 
-                        interAB.cluster21.median = median(afm_pae_interAB[afm_pae_interAB_cluster_row$`2`, afm_pae_interAB.cluster.col$`1`], na.rm = TRUE),
-                        interAB.cluster21.mean = mean(afm_pae_interAB[afm_pae_interAB_cluster_row$`2`, afm_pae_interAB.cluster.col$`1`], na.rm = TRUE),
-                        interAB.cluster21.size = length(afm_pae_interAB_cluster_row$`2`) * length(afm_pae_interAB.cluster.col$`1`),
+                        interAB.cluster3.median = median(afm_pae_interAB[afm_pae_interAB_cluster_row$`2`, afm_pae_interAB.cluster.col$`1`], na.rm = TRUE),
+                        interAB.cluster3.mean = mean(afm_pae_interAB[afm_pae_interAB_cluster_row$`2`, afm_pae_interAB.cluster.col$`1`], na.rm = TRUE),
+                        interAB.cluster3.size = length(afm_pae_interAB_cluster_row$`2`) * length(afm_pae_interAB.cluster.col$`1`),
 
-                        interAB.cluster12.median = median(afm_pae_interAB[afm_pae_interAB_cluster_row$`1`, afm_pae_interAB.cluster.col$`2`], na.rm = TRUE),
-                        interAB.cluster12.mean = mean(afm_pae_interAB[afm_pae_interAB_cluster_row$`1`, afm_pae_interAB.cluster.col$`2`], na.rm = TRUE),
-                        interAB.cluster12.size = length(afm_pae_interAB_cluster_row$`1`) * length(afm_pae_interAB.cluster.col$`2`),
+                        interAB.cluster4.median = median(afm_pae_interAB[afm_pae_interAB_cluster_row$`1`, afm_pae_interAB.cluster.col$`2`], na.rm = TRUE),
+                        interAB.cluster4.mean = mean(afm_pae_interAB[afm_pae_interAB_cluster_row$`1`, afm_pae_interAB.cluster.col$`2`], na.rm = TRUE),
+                        interAB.cluster4.size = length(afm_pae_interAB_cluster_row$`1`) * length(afm_pae_interAB.cluster.col$`2`),
 
-                        interBA.cluster11.median = median(afm_pae_interBA[afm_pae_interBA.cluster.row$`1`, afm_pae_interBA.cluster.col$`1`], na.rm = TRUE),
-                        interBA.cluster11.mean = mean(afm_pae_interBA[afm_pae_interBA.cluster.row$`1`, afm_pae_interBA.cluster.col$`1`], na.rm = TRUE),
-                        interBA.cluster11.size = length(afm_pae_interBA.cluster.row$`1`) * length(afm_pae_interBA.cluster.col$`1`),
+                        interBA.cluster1.median = median(afm_pae_interBA[afm_pae_interBA.cluster.row$`1`, afm_pae_interBA.cluster.col$`1`], na.rm = TRUE),
+                        interBA.cluster1.mean = mean(afm_pae_interBA[afm_pae_interBA.cluster.row$`1`, afm_pae_interBA.cluster.col$`1`], na.rm = TRUE),
+                        interBA.cluster1.size = length(afm_pae_interBA.cluster.row$`1`) * length(afm_pae_interBA.cluster.col$`1`),
 
-                        interBA.cluster22.median = median(afm_pae_interBA[afm_pae_interBA.cluster.row$`2`, afm_pae_interBA.cluster.col$`2`], na.rm = TRUE),
-                        interBA.cluster22.mean = mean(afm_pae_interBA[afm_pae_interBA.cluster.row$`2`, afm_pae_interBA.cluster.col$`2`], na.rm = TRUE),
-                        interBA.cluster22.size = length(afm_pae_interBA.cluster.row$`2`) * length(afm_pae_interBA.cluster.col$`2`),
+                        interBA.cluster2.median = median(afm_pae_interBA[afm_pae_interBA.cluster.row$`2`, afm_pae_interBA.cluster.col$`2`], na.rm = TRUE),
+                        interBA.cluster2.mean = mean(afm_pae_interBA[afm_pae_interBA.cluster.row$`2`, afm_pae_interBA.cluster.col$`2`], na.rm = TRUE),
+                        interBA.cluster2.size = length(afm_pae_interBA.cluster.row$`2`) * length(afm_pae_interBA.cluster.col$`2`),
 
-                        interBA.cluster21.median = median(afm_pae_interBA[afm_pae_interBA.cluster.row$`2`, afm_pae_interBA.cluster.col$`1`], na.rm = TRUE),
-                        interBA.cluster21.mean = mean(afm_pae_interBA[afm_pae_interBA.cluster.row$`2`, afm_pae_interBA.cluster.col$`1`], na.rm = TRUE),
-                        interBA.cluster21.size = length(afm_pae_interBA.cluster.row$`2`) * length(afm_pae_interBA.cluster.col$`1`),
+                        interBA.cluster3.median = median(afm_pae_interBA[afm_pae_interBA.cluster.row$`2`, afm_pae_interBA.cluster.col$`1`], na.rm = TRUE),
+                        interBA.cluster3.mean = mean(afm_pae_interBA[afm_pae_interBA.cluster.row$`2`, afm_pae_interBA.cluster.col$`1`], na.rm = TRUE),
+                        interBA.cluster3.size = length(afm_pae_interBA.cluster.row$`2`) * length(afm_pae_interBA.cluster.col$`1`),
 
-                        interBA.cluster12.median = median(afm_pae_interBA[afm_pae_interBA.cluster.row$`1`, afm_pae_interBA.cluster.col$`2`], na.rm = TRUE),
-                        interBA.cluster12.mean = mean(afm_pae_interBA[afm_pae_interBA.cluster.row$`1`, afm_pae_interBA.cluster.col$`2`], na.rm = TRUE),
-                        interBA.cluster12.size = length(afm_pae_interBA.cluster.row$`1`) * length(afm_pae_interBA.cluster.col$`2`)
+                        interBA.cluster4.median = median(afm_pae_interBA[afm_pae_interBA.cluster.row$`1`, afm_pae_interBA.cluster.col$`2`], na.rm = TRUE),
+                        interBA.cluster4.mean = mean(afm_pae_interBA[afm_pae_interBA.cluster.row$`1`, afm_pae_interBA.cluster.col$`2`], na.rm = TRUE),
+                        interBA.cluster4.size = length(afm_pae_interBA.cluster.row$`1`) * length(afm_pae_interBA.cluster.col$`2`)
       )
     }
 

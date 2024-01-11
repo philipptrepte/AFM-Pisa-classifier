@@ -14,6 +14,8 @@ pae.heatmap <- function(import_afm, afm_complex = "NSP14-NSP10", afm_rank = 1, i
   set.seed = 555
   assertthat::assert_that(any(str_detect(names(import_afm$pae), afm_complex)))
   name <- names(import_afm$pae)[str_detect(names(import_afm$pae), afm_complex) & str_detect(names(import_afm$pae), paste0("rank_", afm_rank))]
+  afm_plldt <- import_afm$plldt
+  afm_pae <- import_afm$pae
 
   pae_matrix <- import_afm$pae[[name]]
   length_A <- import_afm$protein %>%
@@ -49,11 +51,11 @@ pae.heatmap <- function(import_afm, afm_complex = "NSP14-NSP10", afm_rank = 1, i
     heatmap_interAB <- ComplexHeatmap::Heatmap(afm_pae_interAB, cluster_rows = TRUE, cluster_columns = TRUE,
                                                border = TRUE, use_raster = TRUE, row_km = 2, column_km = 2,
                                                heatmap_legend_param = list(title = "PAE (Å)"),
-                                               row_title = NULL, column_title = NULL)
+                                               row_title = NULL, column_title = NULL, circlize::colorRamp2(c(0, 15, 30), c("blue", "white", "red")))
     heatmap_interBA <- ComplexHeatmap::Heatmap(afm_pae_interBA, cluster_rows = TRUE, cluster_columns = TRUE,
                                                border = TRUE, use_raster = TRUE, row_km = 2, column_km = 2,
                                                heatmap_legend_param = list(title = "PAE (Å)"),
-                                               row_title = NULL, column_title = NULL)
+                                               row_title = NULL, column_title = NULL, circlize::colorRamp2(c(0, 15, 30), c("blue", "white", "red")))
 
     afm_pae_df <- pae.interface(import_afm, plldt = plldt)
 

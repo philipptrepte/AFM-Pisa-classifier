@@ -102,12 +102,16 @@ import.afm <- function(dir = 'data/') {
       protein_info <- data.frame()
       cat(paste0("read `*.a3m` files: ", i, " of ", length(a3m_files), "\n"))
       protein_complex <- data.frame(file = unlist(str_extract_all(json_files[i], pattern = "[^/]*$"))[1])
+      j <- 1
     }
     if(i %% 50==0) {
       # Print on the screen some message
     }
     protein_info <- rbind(protein_info, readLines(a3m_files[i], n = 1))
-    protein_complex <- rbind(protein_complex, unlist(str_extract_all(json_files[i+num_models[i-1]], pattern = "[^/]*$"))[1])
+    if(i != 1) {
+      protein_complex <- rbind(protein_complex, unlist(str_extract_all(json_files[j], pattern = "[^/]*$"))[1])
+    }
+    j <- j + num_models[i]
 
     if(i == length(a3m_files)) {
       colnames(protein_info) <- "protein_info"

@@ -1,6 +1,6 @@
 #' Boxplot to visualize PAE for all models of a AFM predicted complex
 #'
-#' @param pae_interface
+#' @param pae_interface: object from the pae.interface() function
 #'
 #' @return boxplot
 #' @export
