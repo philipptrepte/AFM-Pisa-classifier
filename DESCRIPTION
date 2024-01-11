@@ -1,6 +1,6 @@
 Package: AFMpisa
 Title: Classify AlphaFold-Multimer predicted protein complexes using AFM PAE and PDBePISA interface information
-Version: 1.0.1.0
+Version: 1.0.2.0
 Authors@R: 
     person("Philipp", "Trepte", , "treptephilipp@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8141-6272"))
