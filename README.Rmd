@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -26,11 +27,22 @@ The AFM-PISA-classifier package uses AlphaFold-Multimer (AFM) predictions of the
 
 ## Installation
 
+For some plots XQuartz is required, which can be downloaded from [XQuartz](https://www.xquartz.org/).
 You can install the development version of AFM-PISA-classifier from [GitHub](https://github.com/philipptrepte/AFM-PISA-classifier) with:
 
 ``` r
+# Install dependencies
+install.packages("BiocManager")
+BiocManager::install("ComplexHeatmap")
+BiocManager::install("Biostrings")
+BiocManager::install("BiocStyle")
+
+devtools::install_github("philipptrepte/binary-PPI-classifier")
+
+# Install AFMpisa
 devtools::install_github("philipptrepte/AFM-Pisa-classifier")
 
+# Load package
 library(AFMpisa)
 ```
 
@@ -41,6 +53,7 @@ library(AFMpisa)
 library(DT)
 library(dplyr)
 library(knitr)
+library(stringr)
 ```
 
 ### AlphaFold-Multimer (AFM) predictions
@@ -218,7 +231,7 @@ You can also predict the interaction probability of your AFM predicted structura
 ### Load Models
 
 ```{r}
-load(file = "data/maSVM_models/AFM_maSVM_models.RData")
+data("AFM_maSVM_models")
 ```
 
 ### Prepare data
@@ -288,11 +301,11 @@ DT::datatable(YOUR_AFM_PREDICTIONS) %>% formatRound(columns = c('probability'), 
 
 ## Reference
 
-[**AI-guided pipeline for protein-protein interaction drug discovery identifies a SARS-CoV-2 inhibitor**]{.underline}
+[**AI-guided pipeline for protein–protein interaction drug discovery identifies a SARS-CoV-2 inhibitor**]{.underline}
 
-Philipp Trepte#, Christopher Secker#, Simona Kostova, Sibusiso B. Maseko, Soon Gang Choi, Jeremy Blavier, Igor Minia, Eduardo, Silva Ramos, Patricia Cassonnet, Sabrina Golusik, Martina Zenkner, Stephanie Beetz, Mara J. Liebich, Nadine Scharek, Anja Schütz, MarcelSperling, Michael Lisurek, Yang Wang, Kerstin Spirohn, Tong Hao, Michael A. Calderwood, David E. Hill, Markus Landthaler, Julien Olivet, Jean-Claude Twizere, Marc Vidal, Erich E. Wanker
+Trepte P, Secker C, Olivet J, Blavier J, Kostova S, Maseko SB, Minia I, Ramos ES, Cassonnet P, Golusik S, et al (2024) AI-guided pipeline for protein–protein interaction drug discovery identifies a SARS-CoV-2 inhibitor. Mol Syst Biol: 1–30
 
-bioRxiv 2023.06.14.544560; doi: <https://doi.org/10.1101/2023.06.14.544560>
+https://doi.org/10.1038/s44320-024-00019-8
 
 ## License
 
@@ -302,7 +315,7 @@ Distributed under the MIT License. See `License.md` for more information.
 
 Philipp Trepte - [philipp.trepte\@imba.oeaw.ac.at](mailto:philipp.trepte@imba.oeaw.ac.at) - [LinkedIn](https://www.linkedin.com/in/philipp-trepte/)
 
-AFM-PISA-classifier: <https://github.com/philipptrepte/AFM-PISA-classifier>
+AFM-PISA-classifier: https://github.com/philipptrepte/AFM-PISA-classifier
 
 ## Session Info
 
