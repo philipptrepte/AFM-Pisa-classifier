@@ -1,6 +1,5 @@
 ---
 output: github_document
-always_allow_html: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -42,8 +41,6 @@ devtools::install_github("philipptrepte/binary-PPI-classifier")
 # Install AFMpisa
 devtools::install_github("philipptrepte/AFM-Pisa-classifier")
 
-# Load package
-library(AFMpisa)
 ```
 
 ## Requirements
@@ -85,7 +82,7 @@ YOUR_AFM_RESULTS <- import.afm(dir = "data/AFM_json/")
 The list will contain a data frame providing you with an overview of the predicted protein complexes:
 
 ```{r proteinInfo, echo=TRUE}
-DT::datatable(head(YOUR_AFM_RESULTS$protein))
+head(YOUR_AFM_RESULTS$protein)
 ```
 
 #### pLLDT
@@ -109,7 +106,7 @@ YOUR_AFM_RESULTS$pae$`NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_
 It also contains a data frame on the PTM and max PAE values:
 
 ```{r PTM, echo=TRUE}
-DT::datatable(YOUR_AFM_RESULTS$ptm)
+YOUR_AFM_RESULTS$ptm
 ```
 
 #### Number of AFM Models
@@ -129,7 +126,7 @@ In the following, we provide an example on the information extracted from the PD
 ```{r PISAinterface, echo=TRUE, message=FALSE, warning=FALSE}
 YOUR_PISA_INTERFACE <- import.pisa(dir = "data/PDBePISA_xml/")
 
-DT::datatable(YOUR_PISA_INTERFACE)
+YOUR_PISA_INTERFACE
 ```
 
 ### plldt.lineplot()
@@ -203,7 +200,7 @@ YOUR_INTERFACE <- pae.interface(import_afm = YOUR_AFM_RESULTS, plldt = 50)
 ```{r interfaceTable, echo=TRUE, warning=FALSE}
 colnames(YOUR_INTERFACE)
 
-DT::datatable(YOUR_INTERFACE %>% dplyr::select(A_length, B_length, A_protein, B_protein, complex, model, rank, pae)) %>% formatRound(columns = c('pae'), digits = 3)
+YOUR_INTERFACE %>% dplyr::select(A_length, B_length, A_protein, B_protein, complex, model, rank, pae)
 ```
 
 ### pae.boxplot()
@@ -258,8 +255,7 @@ YOUR_TEST_SET <- YOUR_PISA_INTERFACE %>%
   pivot_longer(cols = c(interfaceArea, deltaG, pae), 
                names_to = "data", values_to = "score")
 
-DT::datatable(YOUR_TEST_SET %>% dplyr::select(complex, interaction, orientation, data, score)) %>%
-  formatRound(columns = c('score'), digits = 3)
+YOUR_TEST_SET %>% dplyr::select(complex, interaction, orientation, data, score)
 ```
 
 ```{r TESTSETmatrix, echo=TRUE, warning=FALSE}
@@ -271,7 +267,7 @@ TEST_MAT <- YOUR_TEST_SET %>%
   dplyr::select(c('interfaceArea', 'pae')) %>%
   base::as.matrix()
 
-DT::datatable(TEST_MAT) %>% formatRound(columns = c('interfaceArea', 'pae'), digits = 2)
+TEST_MAT
 ```
 
 ### Predict Interaction Probability
@@ -296,7 +292,7 @@ YOUR_AFM_PREDICTIONS <- prediction %>%
   group_by(interaction, orientation) %>%
   dplyr::summarise(probability = mean(`2`))
 
-DT::datatable(YOUR_AFM_PREDICTIONS) %>% formatRound(columns = c('probability'), digits = 3)
+YOUR_AFM_PREDICTIONS
 ```
 
 ## Reference

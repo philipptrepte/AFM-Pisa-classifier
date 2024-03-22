@@ -38,9 +38,6 @@ devtools::install_github("philipptrepte/binary-PPI-classifier")
 
 # Install AFMpisa
 devtools::install_github("philipptrepte/AFM-Pisa-classifier")
-
-# Load package
-library(AFMpisa)
 ```
 
 ## Requirements
@@ -105,11 +102,12 @@ The list will contain a data frame providing you with an overview of the
 predicted protein complexes:
 
 ``` r
-DT::datatable(head(YOUR_AFM_RESULTS$protein))
+head(YOUR_AFM_RESULTS$protein)
+#>   A_length B_length A_protein B_protein
+#> 1       75      222         E         M
+#> 2      139      298     NSP10     NSP16
+#> 3      527      139     NSP14     NSP10
 ```
-
-<div class="datatables html-widget html-fill-item" id="htmlwidget-6f06ee9191ee7d4221b3" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-6f06ee9191ee7d4221b3">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],[75,139,527],[222,298,139],["E","NSP10","NSP14"],["M","NSP16","NSP10"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>A_length<\/th>\n      <th>B_length<\/th>\n      <th>A_protein<\/th>\n      <th>B_protein<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"A_length","targets":1},{"name":"B_length","targets":2},{"name":"A_protein","targets":3},{"name":"B_protein","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 #### pLLDT
 
@@ -212,11 +210,40 @@ YOUR_AFM_RESULTS$pae$`NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_
 It also contains a data frame on the PTM and max PAE values:
 
 ``` r
-DT::datatable(YOUR_AFM_RESULTS$ptm)
+YOUR_AFM_RESULTS$ptm
+#>                                                                               file
+#> 1                  E-M_53cd1.result/E_M_53cd1_unrelaxed_rank_1_model_2_scores.json
+#> 2                  E-M_53cd1.result/E_M_53cd1_unrelaxed_rank_2_model_4_scores.json
+#> 3                  E-M_53cd1.result/E_M_53cd1_unrelaxed_rank_3_model_1_scores.json
+#> 4                  E-M_53cd1.result/E_M_53cd1_unrelaxed_rank_4_model_3_scores.json
+#> 5                  E-M_53cd1.result/E_M_53cd1_unrelaxed_rank_5_model_5_scores.json
+#> 6  NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_1_model_3_scores.json
+#> 7  NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_2_model_2_scores.json
+#> 8  NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_3_model_1_scores.json
+#> 9  NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_4_model_5_scores.json
+#> 10 NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_5_model_4_scores.json
+#> 11 NSP14-NSP10_c009a.result/NSP14_NSP10_c009a_unrelaxed_rank_1_model_1_scores.json
+#> 12 NSP14-NSP10_c009a.result/NSP14_NSP10_c009a_unrelaxed_rank_2_model_2_scores.json
+#> 13 NSP14-NSP10_c009a.result/NSP14_NSP10_c009a_unrelaxed_rank_3_model_5_scores.json
+#> 14 NSP14-NSP10_c009a.result/NSP14_NSP10_c009a_unrelaxed_rank_4_model_4_scores.json
+#> 15 NSP14-NSP10_c009a.result/NSP14_NSP10_c009a_unrelaxed_rank_5_model_3_scores.json
+#>     ptm max_pae
+#> 1  0.41   31.75
+#> 2  0.41   31.75
+#> 3  0.37   31.75
+#> 4  0.36   31.75
+#> 5  0.42   31.75
+#> 6  0.92   31.75
+#> 7  0.92   31.75
+#> 8  0.92   31.75
+#> 9  0.92   31.75
+#> 10 0.92   31.75
+#> 11 0.90   31.75
+#> 12 0.89   31.75
+#> 13 0.89   31.75
+#> 14 0.88   31.75
+#> 15 0.88   31.75
 ```
-
-<div class="datatables html-widget html-fill-item" id="htmlwidget-f82bdafe8b0e279fbd18" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f82bdafe8b0e279fbd18">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],["E-M_53cd1.result/E_M_53cd1_unrelaxed_rank_1_model_2_scores.json","E-M_53cd1.result/E_M_53cd1_unrelaxed_rank_2_model_4_scores.json","E-M_53cd1.result/E_M_53cd1_unrelaxed_rank_3_model_1_scores.json","E-M_53cd1.result/E_M_53cd1_unrelaxed_rank_4_model_3_scores.json","E-M_53cd1.result/E_M_53cd1_unrelaxed_rank_5_model_5_scores.json","NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_1_model_3_scores.json","NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_2_model_2_scores.json","NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_3_model_1_scores.json","NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_4_model_5_scores.json","NSP10-NSP16_3cd38.result/NSP10_NSP16_3cd38_unrelaxed_rank_5_model_4_scores.json","NSP14-NSP10_c009a.result/NSP14_NSP10_c009a_unrelaxed_rank_1_model_1_scores.json","NSP14-NSP10_c009a.result/NSP14_NSP10_c009a_unrelaxed_rank_2_model_2_scores.json","NSP14-NSP10_c009a.result/NSP14_NSP10_c009a_unrelaxed_rank_3_model_5_scores.json","NSP14-NSP10_c009a.result/NSP14_NSP10_c009a_unrelaxed_rank_4_model_4_scores.json","NSP14-NSP10_c009a.result/NSP14_NSP10_c009a_unrelaxed_rank_5_model_3_scores.json"],[0.41,0.41,0.37,0.36,0.42,0.92,0.92,0.92,0.92,0.92,0.9,0.89,0.89,0.88,0.88],[31.75,31.75,31.75,31.75,31.75,31.75,31.75,31.75,31.75,31.75,31.75,31.75,31.75,31.75,31.75]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>file<\/th>\n      <th>ptm<\/th>\n      <th>max_pae<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"file","targets":1},{"name":"ptm","targets":2},{"name":"max_pae","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 #### Number of AFM Models
 
@@ -244,11 +271,29 @@ NSP10-NSP16 and NSP10-NSP14 complexes.
 ``` r
 YOUR_PISA_INTERFACE <- import.pisa(dir = "data/PDBePISA_xml/")
 
-DT::datatable(YOUR_PISA_INTERFACE)
+YOUR_PISA_INTERFACE
+#> # A tibble: 15 × 17
+#>    complex   model  rank surfaceAreaA surfaceAreaB interfaceAreaA interfaceAreaB
+#>    <chr>     <dbl> <dbl>        <dbl>        <dbl>          <dbl>          <dbl>
+#>  1 E_M           2     1        7810.       17071.          1333.          1306.
+#>  2 E_M           4     2        7917.       16348           1021.           913.
+#>  3 E_M           1     3        7629.       17173.          1053.           918.
+#>  4 E_M           3     4        7878.       17654.          1001.          1068.
+#>  5 E_M           5     5        7641.       16512.           810.           764.
+#>  6 NSP10_NS…     3     1        8915.       14330.           986.           923.
+#>  7 NSP10_NS…     2     2        8919.       14331            974.           902.
+#>  8 NSP10_NS…     1     3        8706.       14215.          1162.          1094.
+#>  9 NSP10_NS…     5     4        8750.       14314.          1263.          1193.
+#> 10 NSP10_NS…     4     5        8766.       14186.          1202.          1110.
+#> 11 NSP14_NS…     1     1       26445.        8903.          2176.          2364.
+#> 12 NSP14_NS…     2     2       26911.        8903.          2239.          2378.
+#> 13 NSP14_NS…     5     3       26758.        8890.          2178.          2313.
+#> 14 NSP14_NS…     4     4       26800.        8901.          2180.          2406.
+#> 15 NSP14_NS…     3     5       27026.        8867.          2131.          2286.
+#> # ℹ 10 more variables: interfaceResiduesA <dbl>, interfaceResiduesB <dbl>,
+#> #   deltaG <dbl>, pvalue <dbl>, hbonds <dbl>, saltbridges <dbl>,
+#> #   disulfide <dbl>, css <dbl>, interfaceArea <dbl>, surfaceArea <dbl>
 ```
-
-<div class="datatables html-widget html-fill-item" id="htmlwidget-7648b052dfa496c8eca8" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7648b052dfa496c8eca8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],["E_M","E_M","E_M","E_M","E_M","NSP10_NSP16","NSP10_NSP16","NSP10_NSP16","NSP10_NSP16","NSP10_NSP16","NSP14_NSP10","NSP14_NSP10","NSP14_NSP10","NSP14_NSP10","NSP14_NSP10"],[2,4,1,3,5,3,2,1,5,4,1,2,5,4,3],[1,2,3,4,5,1,2,3,4,5,1,2,3,4,5],[7810.47,7917.07,7628.83,7877.64,7641.07,8915.469999999999,8919.08,8706.5,8749.57,8766.469999999999,26444.8,26911.1,26757.5,26800.5,27026.4],[17071.3,16348,17173.4,17654.5,16512.2,14330.2,14331,14215.3,14314.4,14185.7,8903.01,8902.57,8889.709999999999,8900.610000000001,8866.57],[1332.81,1021.47,1053.13,1000.69,810.478,986.146,973.987,1161.91,1262.6,1202.27,2175.83,2238.99,2177.5,2180.35,2131.06],[1305.54,913.403,918.454,1068.17,763.7190000000001,923.292,901.893,1094.19,1192.85,1109.67,2363.75,2378.1,2312.9,2406.01,2286.46],[33,23,28,29,25,26,26,30,31,30,70,66,70,67,66],[36,28,31,28,30,34,34,37,41,40,54,53,52,51,52],[-27.1956,-20.0535,-13.9402,-29.8936,-13.91,-11.5548,-12.3258,-14.5047,-15.796,-13.83,-29.4201,-29.5296,-27.4647,-29.2695,-27.0578],[0.500884,0.382862,0.630888,0.122376,0.590006,0.313245,0.278213,0.291634,0.281656,0.352611,0.164085,0.123212,0.175487,0.156385,0.167833],[5,1,4,4,1,8,8,10,13,13,29,27,29,29,26],[0,0,0,0,0,5,4,4,1,4,2,3,2,2,2],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[1319.175,967.4365,985.792,1034.43,787.0985000000001,954.7190000000001,937.9400000000001,1128.05,1227.725,1155.97,2269.79,2308.545,2245.2,2293.18,2208.76],[24881.77,24265.07,24802.23,25532.14,24153.27,23245.67,23250.08,22921.8,23063.97,22952.17,35347.81,35813.67,35647.21,35701.11,35892.97]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>complex<\/th>\n      <th>model<\/th>\n      <th>rank<\/th>\n      <th>surfaceAreaA<\/th>\n      <th>surfaceAreaB<\/th>\n      <th>interfaceAreaA<\/th>\n      <th>interfaceAreaB<\/th>\n      <th>interfaceResiduesA<\/th>\n      <th>interfaceResiduesB<\/th>\n      <th>deltaG<\/th>\n      <th>pvalue<\/th>\n      <th>hbonds<\/th>\n      <th>saltbridges<\/th>\n      <th>disulfide<\/th>\n      <th>css<\/th>\n      <th>interfaceArea<\/th>\n      <th>surfaceArea<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"complex","targets":1},{"name":"model","targets":2},{"name":"rank","targets":3},{"name":"surfaceAreaA","targets":4},{"name":"surfaceAreaB","targets":5},{"name":"interfaceAreaA","targets":6},{"name":"interfaceAreaB","targets":7},{"name":"interfaceResiduesA","targets":8},{"name":"interfaceResiduesB","targets":9},{"name":"deltaG","targets":10},{"name":"pvalue","targets":11},{"name":"hbonds","targets":12},{"name":"saltbridges","targets":13},{"name":"disulfide","targets":14},{"name":"css","targets":15},{"name":"interfaceArea","targets":16},{"name":"surfaceArea","targets":17}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 ### plldt.lineplot()
 
@@ -381,11 +426,26 @@ colnames(YOUR_INTERFACE)
 #> [31] "interBA.cluster4.mean"   "interBA.cluster4.size"  
 #> [33] "pae"                     "interaction"
 
-DT::datatable(YOUR_INTERFACE %>% dplyr::select(A_length, B_length, A_protein, B_protein, complex, model, rank, pae)) %>% formatRound(columns = c('pae'), digits = 3)
+YOUR_INTERFACE %>% dplyr::select(A_length, B_length, A_protein, B_protein, complex, model, rank, pae)
+#> # A tibble: 15 × 8
+#>    A_length B_length A_protein B_protein complex     model  rank   pae
+#>       <dbl>    <dbl> <chr>     <chr>     <chr>       <dbl> <dbl> <dbl>
+#>  1       75      222 E         M         E_M             2     1 15.3 
+#>  2       75      222 E         M         E_M             4     2 16.3 
+#>  3       75      222 E         M         E_M             1     3 17.8 
+#>  4       75      222 E         M         E_M             3     4 15.2 
+#>  5       75      222 E         M         E_M             5     5 19.0 
+#>  6      139      298 NSP10     NSP16     NSP10_NSP16     3     1  3.77
+#>  7      139      298 NSP10     NSP16     NSP10_NSP16     2     2  3.30
+#>  8      139      298 NSP10     NSP16     NSP10_NSP16     1     3  3.87
+#>  9      139      298 NSP10     NSP16     NSP10_NSP16     5     4  3.42
+#> 10      139      298 NSP10     NSP16     NSP10_NSP16     4     5  3.69
+#> 11      527      139 NSP14     NSP10     NSP14_NSP10     1     1  4.29
+#> 12      527      139 NSP14     NSP10     NSP14_NSP10     2     2  4.28
+#> 13      527      139 NSP14     NSP10     NSP14_NSP10     5     3  4.27
+#> 14      527      139 NSP14     NSP10     NSP14_NSP10     4     4  4.36
+#> 15      527      139 NSP14     NSP10     NSP14_NSP10     3     5  4.37
 ```
-
-<div class="datatables html-widget html-fill-item" id="htmlwidget-056e3b38a894c2c32c62" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-056e3b38a894c2c32c62">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],[75,75,75,75,75,139,139,139,139,139,527,527,527,527,527],[222,222,222,222,222,298,298,298,298,298,139,139,139,139,139],["E","E","E","E","E","NSP10","NSP10","NSP10","NSP10","NSP10","NSP14","NSP14","NSP14","NSP14","NSP14"],["M","M","M","M","M","NSP16","NSP16","NSP16","NSP16","NSP16","NSP10","NSP10","NSP10","NSP10","NSP10"],["E_M","E_M","E_M","E_M","E_M","NSP10_NSP16","NSP10_NSP16","NSP10_NSP16","NSP10_NSP16","NSP10_NSP16","NSP14_NSP10","NSP14_NSP10","NSP14_NSP10","NSP14_NSP10","NSP14_NSP10"],[2,4,1,3,5,3,2,1,5,4,1,2,5,4,3],[1,2,3,4,5,1,2,3,4,5,1,2,3,4,5],[15.32996022727273,16.32756097560976,17.81809855072463,15.23264790764791,18.95357945425361,3.769526555192515,3.300525721871888,3.867796515523791,3.419306066176473,3.685836379142304,4.290760605347763,4.283574456521738,4.265855263157899,4.358467083505579,4.374855677776849]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>A_length<\/th>\n      <th>B_length<\/th>\n      <th>A_protein<\/th>\n      <th>B_protein<\/th>\n      <th>complex<\/th>\n      <th>model<\/th>\n      <th>rank<\/th>\n      <th>pae<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2,6,7,8]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"A_length","targets":1},{"name":"B_length","targets":2},{"name":"A_protein","targets":3},{"name":"B_protein","targets":4},{"name":"complex","targets":5},{"name":"model","targets":6},{"name":"rank","targets":7},{"name":"pae","targets":8}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
 
 ### pae.boxplot()
 
@@ -456,12 +516,22 @@ YOUR_TEST_SET <- YOUR_PISA_INTERFACE %>%
   pivot_longer(cols = c(interfaceArea, deltaG, pae), 
                names_to = "data", values_to = "score")
 
-DT::datatable(YOUR_TEST_SET %>% dplyr::select(complex, interaction, orientation, data, score)) %>%
-  formatRound(columns = c('score'), digits = 3)
+YOUR_TEST_SET %>% dplyr::select(complex, interaction, orientation, data, score)
+#> # A tibble: 45 × 5
+#>    complex interaction orientation data           score
+#>    <chr>   <chr>       <chr>       <chr>          <dbl>
+#>  1 Covid   E + M       NA1+NA1     interfaceArea 1319. 
+#>  2 Covid   E + M       NA1+NA1     deltaG          27.2
+#>  3 Covid   E + M       NA1+NA1     pae             24.7
+#>  4 Covid   E + M       NA2+NA2     interfaceArea  967. 
+#>  5 Covid   E + M       NA2+NA2     deltaG          20.1
+#>  6 Covid   E + M       NA2+NA2     pae             23.7
+#>  7 Covid   E + M       NA3+NA3     interfaceArea  986. 
+#>  8 Covid   E + M       NA3+NA3     deltaG          13.9
+#>  9 Covid   E + M       NA3+NA3     pae             22.2
+#> 10 Covid   E + M       NA4+NA4     interfaceArea 1034. 
+#> # ℹ 35 more rows
 ```
-
-<div class="datatables html-widget html-fill-item" id="htmlwidget-b7b4ede44f131c7d4e37" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-b7b4ede44f131c7d4e37">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45"],["Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid","Covid"],["E + M","E + M","E + M","E + M","E + M","E + M","E + M","E + M","E + M","E + M","E + M","E + M","E + M","E + M","E + M","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10"],["NA1+NA1","NA1+NA1","NA1+NA1","NA2+NA2","NA2+NA2","NA2+NA2","NA3+NA3","NA3+NA3","NA3+NA3","NA4+NA4","NA4+NA4","NA4+NA4","NA5+NA5","NA5+NA5","NA5+NA5","NA1+NA1","NA1+NA1","NA1+NA1","NA2+NA2","NA2+NA2","NA2+NA2","NA3+NA3","NA3+NA3","NA3+NA3","NA4+NA4","NA4+NA4","NA4+NA4","NA5+NA5","NA5+NA5","NA5+NA5","NA1+NA1","NA1+NA1","NA1+NA1","NA2+NA2","NA2+NA2","NA2+NA2","NA3+NA3","NA3+NA3","NA3+NA3","NA4+NA4","NA4+NA4","NA4+NA4","NA5+NA5","NA5+NA5","NA5+NA5"],["interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae","interfaceArea","deltaG","pae"],[1319.175,27.1956,24.67003977272727,967.4365,20.0535,23.67243902439024,985.792,13.9402,22.18190144927537,1034.43,29.8936,24.76735209235209,787.0985000000001,13.91,21.04642054574639,954.7190000000001,11.5548,36.23047344480749,937.9400000000001,12.3258,36.69947427812811,1128.05,14.5047,36.13220348447621,1227.725,15.796,36.58069393382353,1155.97,13.83,36.3141636208577,2269.79,29.4201,35.70923939465224,2308.545,29.5296,35.71642554347827,2245.2,27.4647,35.7341447368421,2293.18,29.2695,35.64153291649442,2208.76,27.0578,35.62514432222315]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>complex<\/th>\n      <th>interaction<\/th>\n      <th>orientation<\/th>\n      <th>data<\/th>\n      <th>score<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":5},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"complex","targets":1},{"name":"interaction","targets":2},{"name":"orientation","targets":3},{"name":"data","targets":4},{"name":"score","targets":5}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
 
 ``` r
 TEST_MAT <- YOUR_TEST_SET %>% 
@@ -472,11 +542,24 @@ TEST_MAT <- YOUR_TEST_SET %>%
   dplyr::select(c('interfaceArea', 'pae')) %>%
   base::as.matrix()
 
-DT::datatable(TEST_MAT) %>% formatRound(columns = c('interfaceArea', 'pae'), digits = 2)
+TEST_MAT
+#>                                          interfaceArea      pae
+#> Covid;E + M;E+M_;NA1+NA1                     1319.1750 24.67004
+#> Covid;E + M;E+M_;NA2+NA2                      967.4365 23.67244
+#> Covid;E + M;E+M_;NA3+NA3                      985.7920 22.18190
+#> Covid;E + M;E+M_;NA4+NA4                     1034.4300 24.76735
+#> Covid;E + M;E+M_;NA5+NA5                      787.0985 21.04642
+#> Covid;NSP10 + NSP16;NSP10+NSP16_;NA1+NA1      954.7190 36.23047
+#> Covid;NSP10 + NSP16;NSP10+NSP16_;NA2+NA2      937.9400 36.69947
+#> Covid;NSP10 + NSP16;NSP10+NSP16_;NA3+NA3     1128.0500 36.13220
+#> Covid;NSP10 + NSP16;NSP10+NSP16_;NA4+NA4     1227.7250 36.58069
+#> Covid;NSP10 + NSP16;NSP10+NSP16_;NA5+NA5     1155.9700 36.31416
+#> Covid;NSP14 + NSP10;NSP14+NSP10_;NA1+NA1     2269.7900 35.70924
+#> Covid;NSP14 + NSP10;NSP14+NSP10_;NA2+NA2     2308.5450 35.71643
+#> Covid;NSP14 + NSP10;NSP14+NSP10_;NA3+NA3     2245.2000 35.73414
+#> Covid;NSP14 + NSP10;NSP14+NSP10_;NA4+NA4     2293.1800 35.64153
+#> Covid;NSP14 + NSP10;NSP14+NSP10_;NA5+NA5     2208.7600 35.62514
 ```
-
-<div class="datatables html-widget html-fill-item" id="htmlwidget-a15182a60a8c1e2cefbd" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-a15182a60a8c1e2cefbd">{"x":{"filter":"none","vertical":false,"data":[["Covid;E + M;E+M_;NA1+NA1","Covid;E + M;E+M_;NA2+NA2","Covid;E + M;E+M_;NA3+NA3","Covid;E + M;E+M_;NA4+NA4","Covid;E + M;E+M_;NA5+NA5","Covid;NSP10 + NSP16;NSP10+NSP16_;NA1+NA1","Covid;NSP10 + NSP16;NSP10+NSP16_;NA2+NA2","Covid;NSP10 + NSP16;NSP10+NSP16_;NA3+NA3","Covid;NSP10 + NSP16;NSP10+NSP16_;NA4+NA4","Covid;NSP10 + NSP16;NSP10+NSP16_;NA5+NA5","Covid;NSP14 + NSP10;NSP14+NSP10_;NA1+NA1","Covid;NSP14 + NSP10;NSP14+NSP10_;NA2+NA2","Covid;NSP14 + NSP10;NSP14+NSP10_;NA3+NA3","Covid;NSP14 + NSP10;NSP14+NSP10_;NA4+NA4","Covid;NSP14 + NSP10;NSP14+NSP10_;NA5+NA5"],[1319.175,967.4365,985.792,1034.43,787.0985000000001,954.7190000000001,937.9400000000001,1128.05,1227.725,1155.97,2269.79,2308.545,2245.2,2293.18,2208.76],[24.67003977272727,23.67243902439024,22.18190144927537,24.76735209235209,21.04642054574639,36.23047344480749,36.69947427812811,36.13220348447621,36.58069393382353,36.3141636208577,35.70923939465224,35.71642554347827,35.7341447368421,35.64153291649442,35.62514432222315]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>interfaceArea<\/th>\n      <th>pae<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"interfaceArea","targets":1},{"name":"pae","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 
 ### Predict Interaction Probability
 
@@ -502,11 +585,27 @@ YOUR_AFM_PREDICTIONS <- prediction %>%
 #> `summarise()` has grouped output by 'interaction'. You can override using the
 #> `.groups` argument.
 
-DT::datatable(YOUR_AFM_PREDICTIONS) %>% formatRound(columns = c('probability'), digits = 3)
+YOUR_AFM_PREDICTIONS
+#> # A tibble: 15 × 3
+#> # Groups:   interaction [3]
+#>    interaction   orientation probability
+#>    <chr>         <chr>             <dbl>
+#>  1 E + M         NA1+NA1           0.792
+#>  2 E + M         NA2+NA2           0.617
+#>  3 E + M         NA3+NA3           0.512
+#>  4 E + M         NA4+NA4           0.715
+#>  5 E + M         NA5+NA5           0.346
+#>  6 NSP10 + NSP16 NA1+NA1           0.985
+#>  7 NSP10 + NSP16 NA2+NA2           0.986
+#>  8 NSP10 + NSP16 NA3+NA3           0.989
+#>  9 NSP10 + NSP16 NA4+NA4           0.992
+#> 10 NSP10 + NSP16 NA5+NA5           0.990
+#> 11 NSP14 + NSP10 NA1+NA1           0.998
+#> 12 NSP14 + NSP10 NA2+NA2           0.998
+#> 13 NSP14 + NSP10 NA3+NA3           0.998
+#> 14 NSP14 + NSP10 NA4+NA4           0.998
+#> 15 NSP14 + NSP10 NA5+NA5           0.997
 ```
-
-<div class="datatables html-widget html-fill-item" id="htmlwidget-088764487bc5cf22a60b" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-088764487bc5cf22a60b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],["E + M","E + M","E + M","E + M","E + M","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP10 + NSP16","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10","NSP14 + NSP10"],["NA1+NA1","NA2+NA2","NA3+NA3","NA4+NA4","NA5+NA5","NA1+NA1","NA2+NA2","NA3+NA3","NA4+NA4","NA5+NA5","NA1+NA1","NA2+NA2","NA3+NA3","NA4+NA4","NA5+NA5"],[0.7915946663422555,0.6166381345685548,0.5121862570025715,0.7154868027944231,0.3462740226623668,0.9846361511635606,0.9860372406055086,0.9885621268594141,0.9915440248749714,0.9896574106330235,0.9975605731546895,0.9976689764728894,0.9975099491616753,0.997575801392241,0.997318962254754]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>interaction<\/th>\n      <th>orientation<\/th>\n      <th>probability<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 3, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":3},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"interaction","targets":1},{"name":"orientation","targets":2},{"name":"probability","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
 
 ## Reference
 
@@ -582,35 +681,33 @@ sessionInfo()
 #>  [10] fs_1.6.3                zlibbioc_1.48.2         vctrs_0.6.5            
 #>  [13] Cairo_1.6-2             RCurl_1.98-1.14         rstatix_0.7.2          
 #>  [16] htmltools_0.5.7         broom_1.0.5             cellranger_1.1.0       
-#>  [19] pROC_1.18.5             sass_0.4.9              parallelly_1.37.1      
-#>  [22] bslib_0.6.1             htmlwidgets_1.6.4       cachem_1.0.8           
-#>  [25] rootSolve_1.8.2.4       lubridate_1.9.3         lifecycle_1.0.4        
-#>  [28] iterators_1.0.14        pkgconfig_2.0.3         Matrix_1.6-5           
-#>  [31] R6_2.5.1                fastmap_1.1.1           clue_0.3-65            
-#>  [34] GenomeInfoDbData_1.2.11 future_1.33.1           digest_0.6.35          
-#>  [37] Exact_3.2               colorspace_2.1-0        crosstalk_1.2.1        
-#>  [40] labeling_0.4.3          fansi_1.0.6             timechange_0.3.0       
-#>  [43] httr_1.4.7              abind_1.4-5             compiler_4.3.2         
-#>  [46] proxy_0.4-27            withr_3.0.0             doParallel_1.0.17      
-#>  [49] backports_1.4.1         carData_3.0-5           highr_0.10             
-#>  [52] ggsignif_0.6.4          MASS_7.3-60.0.1         lava_1.8.0             
-#>  [55] gld_2.6.6               ModelMetrics_1.2.2.2    tools_4.3.2            
-#>  [58] future.apply_1.11.1     nnet_7.3-19             glue_1.7.0             
-#>  [61] nlme_3.1-164            cluster_2.1.6           reshape2_1.4.4         
-#>  [64] generics_0.1.3          recipes_1.0.10          gtable_0.3.4           
-#>  [67] class_7.3-22            data.table_1.15.2       lmom_3.0               
-#>  [70] car_3.1-2               utf8_1.2.4              foreach_1.5.2          
-#>  [73] pillar_1.9.0            circlize_0.4.16         splines_4.3.2          
-#>  [76] survival_3.5-8          tidyselect_1.2.1        gridExtra_2.3          
-#>  [79] xfun_0.42               expm_0.999-9            hardhat_1.3.1          
-#>  [82] timeDate_4032.109       matrixStats_1.2.0       stringi_1.8.3          
-#>  [85] lazyeval_0.2.2          yaml_2.3.8              boot_1.3-30            
-#>  [88] evaluate_0.23           codetools_0.2-19        cli_3.6.2              
-#>  [91] rpart_4.1.23            jquerylib_0.1.4         munsell_0.5.0          
-#>  [94] Rcpp_1.0.12             readxl_1.4.3            globals_0.16.3         
-#>  [97] png_0.1-8               parallel_4.3.2          ellipsis_0.3.2         
-#> [100] assertthat_0.2.1        gower_1.0.1             bitops_1.0-7           
-#> [103] listenv_0.9.1           mvtnorm_1.2-4           ipred_0.9-14           
-#> [106] scales_1.3.0            prodlim_2023.08.28      crayon_1.5.2           
-#> [109] GetoptLong_1.0.5
+#>  [19] pROC_1.18.5             parallelly_1.37.1       htmlwidgets_1.6.4      
+#>  [22] rootSolve_1.8.2.4       lubridate_1.9.3         lifecycle_1.0.4        
+#>  [25] iterators_1.0.14        pkgconfig_2.0.3         Matrix_1.6-5           
+#>  [28] R6_2.5.1                fastmap_1.1.1           clue_0.3-65            
+#>  [31] GenomeInfoDbData_1.2.11 future_1.33.1           digest_0.6.35          
+#>  [34] Exact_3.2               colorspace_2.1-0        labeling_0.4.3         
+#>  [37] fansi_1.0.6             timechange_0.3.0        httr_1.4.7             
+#>  [40] abind_1.4-5             compiler_4.3.2          proxy_0.4-27           
+#>  [43] withr_3.0.0             doParallel_1.0.17       backports_1.4.1        
+#>  [46] carData_3.0-5           highr_0.10              ggsignif_0.6.4         
+#>  [49] MASS_7.3-60.0.1         lava_1.8.0              gld_2.6.6              
+#>  [52] ModelMetrics_1.2.2.2    tools_4.3.2             future.apply_1.11.1    
+#>  [55] nnet_7.3-19             glue_1.7.0              nlme_3.1-164           
+#>  [58] cluster_2.1.6           reshape2_1.4.4          generics_0.1.3         
+#>  [61] recipes_1.0.10          gtable_0.3.4            class_7.3-22           
+#>  [64] data.table_1.15.2       lmom_3.0                car_3.1-2              
+#>  [67] utf8_1.2.4              foreach_1.5.2           pillar_1.9.0           
+#>  [70] circlize_0.4.16         splines_4.3.2           survival_3.5-8         
+#>  [73] tidyselect_1.2.1        gridExtra_2.3           xfun_0.42              
+#>  [76] expm_0.999-9            hardhat_1.3.1           timeDate_4032.109      
+#>  [79] matrixStats_1.2.0       stringi_1.8.3           lazyeval_0.2.2         
+#>  [82] yaml_2.3.8              boot_1.3-30             evaluate_0.23          
+#>  [85] codetools_0.2-19        cli_3.6.2               rpart_4.1.23           
+#>  [88] munsell_0.5.0           Rcpp_1.0.12             readxl_1.4.3           
+#>  [91] globals_0.16.3          png_0.1-8               parallel_4.3.2         
+#>  [94] assertthat_0.2.1        gower_1.0.1             bitops_1.0-7           
+#>  [97] listenv_0.9.1           mvtnorm_1.2-4           ipred_0.9-14           
+#> [100] scales_1.3.0            prodlim_2023.08.28      crayon_1.5.2           
+#> [103] GetoptLong_1.0.5
 ```
