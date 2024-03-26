@@ -7,9 +7,9 @@
 #' @export
 #'
 #' @examples
-afm.pisa.heatmap <- function(import_afm, import_pisa) {
+afm.pisa.heatmap <- function(import_afm, import_pisa, plldt = 0) {
   interface <- import_pisa
-  afm_pae <- pae.interface(import_afm)
+  afm_pae <- pae.interface(import_afm, plldt = plldt)
 
   plot <- cowplot::plot_grid(
     interface %>%

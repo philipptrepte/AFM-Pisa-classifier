@@ -44,7 +44,7 @@ pae.interface <- function(import_afm, plldt = 50) {
     afm_pae_interBA <- afm_pae_interBA[plldt_filteredA,plldt_filteredB]
 
     if(qualityA == FALSE | qualityB == FALSE) {
-      tmp <- data.frame(referenceset.af.proteinInfo,
+      tmp <- data.frame(proteinInfo,
                         file = names(afm_pae)[i],
                         complex = str_extract(names(afm_pae)[i], pattern = "[:alnum:]*_[:alnum:]*(?=_)"),
                         model = as.numeric(str_extract(names(afm_pae)[i], pattern = "(?<=_model_)[:digit:]*")),

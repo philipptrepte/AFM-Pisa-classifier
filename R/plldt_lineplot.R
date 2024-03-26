@@ -13,7 +13,7 @@ plldt.lineplot <- function(import_afm, afm_complex = "NSP10-NSP16", afm_rank = "
   assertthat::assert_that(any(str_detect(names(import_afm$plldt), afm_complex)))
   assertthat::assert_that(afm_rank == "all" | is.double(afm_rank))
   proteinInfo <- import_afm$protein %>%
-    dplyr::filter(A_protein == stringr::str_split(afm_complex, "-", simplify = TRUE)[1,1] & B_protein == stringr::str_split(afm_complex, "-", simplify = TRUE)[1,2])
+    dplyr::filter(A_protein == stringr::str_split(afm_complex, "-|_|\\+", simplify = TRUE)[1,1] & B_protein == stringr::str_split(afm_complex, "-|_|\\+", simplify = TRUE)[1,2])
 
   if(is.double(afm_rank)) {
     afm_rank <- as.integer(afm_rank)
@@ -44,7 +44,7 @@ plldt.lineplot <- function(import_afm, afm_complex = "NSP10-NSP16", afm_rank = "
     ranks <- names(import_afm$plldt)[stringr::str_detect(names(import_afm$plldt), afm_complex)]
     df <- data.frame()
     for(i in 1:length(ranks)) {
-      name <- names(import_afm$plldt)[stringr::str_detect(names(import_afm$plldt), afm_complex) & stringr::str_detect(names(import_afm$plldt), paste0("rank_", i))]
+      name <- names(import_afm$plldt)[stringr::str_detect(names(import_afm$plldt), afm_complex) & stringr::str_detect(names(import_afm$plldt), paste0("rank_0*", i))]
       df <- rbind(df, data.frame(plldt = import_afm$plldt[[name]],
                        rank = i) %>% dplyr::mutate(id = dplyr::row_number()))
       plot <- df %>%
